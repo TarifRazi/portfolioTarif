@@ -229,6 +229,7 @@ h3 {
 .contactContainer {
     width: 100%;
     height: 100vh;
+    padding-top: 30px;
     align-items: center;
     display: flex;
     gap: 50px;
