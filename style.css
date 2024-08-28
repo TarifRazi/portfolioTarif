@@ -100,6 +100,99 @@ h3 {
     padding-right: 30px;
 }
 
+@keyframes slideInFromLeft {
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromRight {
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Skill section styles */
+.skills-section {
+    height: 100vh;
+    width: 100%;
+    align-items: center;
+    color: white;
+}
+
+.skill-bar {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.barImg {
+    margin-bottom: 5px;
+    width: 10%;
+    text-align: left;
+}
+
+.barImg img {
+    width: 50px;
+}
+
+.bar {
+    height: 30px;
+    width: 50%;
+    background-color: #444;
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+.progress {
+    width: 0;
+    height: 30px;
+    background-color: #ff4b4b;
+    line-height: 25px;
+    color: white;
+    text-align: right;
+    padding-right: 10px;
+    border-radius: 25px;
+    transition: width 1.5s ease;
+}
+
+/* Specific progress bars */
+.progress.html {
+    width: 95%;
+    background-color: #f06529;
+}
+
+.progress.css {
+    width: 87%;
+    background-color: #2965f1;
+}
+
+.progress.js {
+    width: 60%;
+    background-color: #f0db4f;
+}
+
+.progress.react {
+    width: 60%;
+    background-color: #61dafb;
+}
+
+.progress.express {
+    width: 50%;
+    background-color: #000000;
+}
+
+.progress.sql {
+    width: 70%;
+    background-color: #00758f;
+}
+
+.progress.plsql {
+    width: 65%;
+    background-color: #d57f00;
+}
 
 
 .eduIns {
