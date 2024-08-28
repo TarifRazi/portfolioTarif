@@ -10,6 +10,7 @@ body {
     height: auto;
     background-attachment: fixed;
     background-size: cover;
+    overflow-x: hidden;
 }
 
 h2 {
@@ -23,6 +24,52 @@ h3 {
 }
 
 
+section {
+    padding: 0;
+    margin: 0;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        scale: 0.5;
+    }
+
+    to {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+@keyframes appearLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+        /* clip-path: inset(100% 100% 0 0); */
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+        /* clip-path: inset(0 0 0 0); */
+    }
+}
+
+@keyframes appearRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+        /* clip-path: inset(100% 100% 0 0); */
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+        /* clip-path: inset(0 0 0 0); */
+    }
+}
+
+
 .navli ul li a {
     text-decoration: none;
     padding: 5px;
@@ -32,8 +79,26 @@ h3 {
     display: inline-block;
 }
 
+.navli a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: red;
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
+}
+
+.navli a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
 .navli a:hover {
-    transform: scale(1.2);
+    transform: scale(1.5);
     /* Increase size by 20% on hover */
     /* z-index: 1; */
     /* Bring the hovered item to the front */
@@ -70,6 +135,7 @@ h3 {
     list-style: none;
 }
 
+
 #hi {
     width: 100%;
     height: 100vh;
@@ -77,6 +143,24 @@ h3 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+#hi.visible,
+.about.visible,
+#education.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#hi h2 {
+    animation-delay: 0.5s;
+}
+
+#hi h1 {
+    animation-delay: 1s;
 }
 
 .about {
@@ -84,39 +168,49 @@ h3 {
     justify-content: space-evenly;
     align-items: center;
     height: 100vh;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease, transform 1s ease;
 }
 
 .aboutImg {
     width: 50%;
+    transform: translateX(-50px);
+    opacity: 0;
+    transition: opacity 1s ease, transform 1s ease;
 }
 
 .aboutImg img {
     border-radius: 50%;
+    transition: transform 0.3s ease-in-out;
+}
+
+.aboutImg img:hover {
+    transform: scale(1.1);
 }
 
 .aboutText {
     width: 50%;
     text-align: justify;
     padding-right: 30px;
+    transform: translateX(50px);
+    opacity: 0;
+    transition: opacity 1s ease, transform 1s ease;
 }
 
-@keyframes slideInFromLeft {
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
+.aboutImg.visible {
+    opacity: 1;
+    transform: translateX(0);
 }
 
-@keyframes slideInFromRight {
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
+.aboutText.visible {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 /* Skill section styles */
 .skills-section {
-    height: 100vh;
+    /* height: 100vh; */
     width: 100%;
     align-items: center;
     color: white;
@@ -129,13 +223,15 @@ h3 {
 }
 
 .barImg {
+    padding-left: 30px;
     margin-bottom: 5px;
+    text-align: center;
     width: 10%;
     text-align: left;
 }
 
 .barImg img {
-    width: 50px;
+    width: 60px;
 }
 
 .bar {
@@ -233,11 +329,28 @@ h3 {
 }
 
 .education {
-    margin-top: 20px;
+    margin-top: 200px;
     display: flex;
     width: 100%;
     height: 100vh;
     align-items: center;
+}
+
+#education {
+    opacity: 0;
+    transform: scale(0.9);
+    /* Starts with a scaled-down effect */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.experiences {
+    margin-top: 40px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    animation: appear linear;
+    animation-timeline: view();
+    animation-range: entry 0 cover 40%;
 }
 
 .expImg {
@@ -252,13 +365,7 @@ h3 {
     width: 50%;
     text-align: left;
     padding-left: 25px;
-}
-
-.experiences {
-    margin-top: 40px;
-    height: 100vh;
-    display: flex;
-    align-items: center;
+    /* animation: expTxt 4s 1s iteration-count direction fill-mode; */
 }
 
 .work {
@@ -266,6 +373,9 @@ h3 {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    animation: appear ease-in;
+    animation-timeline: view();
+    animation-range: entry 0 cover 40%;
 }
 
 .works {
@@ -298,6 +408,9 @@ h3 {
 .works {
     display: flex;
     justify-content: space-around;
+    animation: appearRight linear;
+    animation-timeline: view();
+    animation-range: entry 0 cover 40%;
 }
 
 .project {
@@ -322,12 +435,19 @@ h3 {
 .contactContainer {
     width: 100%;
     height: 100vh;
-    padding-top: 30px;
+    padding-top: 50px;
+    padding-bottom: 40px;
     align-items: center;
     display: flex;
     gap: 50px;
     flex-direction: column;
     justify-content: center;
+}
+
+.contactContainer h2{
+    animation: appear linear;
+    animation-timeline: view();
+    animation-range: entry 0 cover 40%;
 }
 
 .social {
@@ -338,6 +458,9 @@ h3 {
     padding: 0;
     transition: transform 0.3s ease, color 0.3s ease;
     z-index: 5;
+    animation: appearLeft linear;
+    animation-timeline: view();
+    animation-range: entry 0 cover 40%;
 }
 
 .social a:hover {
@@ -349,6 +472,9 @@ h3 {
     width: 70%;
     text-align: left;
     font-size: 30px;
+    animation: appearRight linear;
+    animation-timeline: view();
+    animation-range: entry 0 cover 40%;
 }
 
 .form-group {
@@ -372,7 +498,7 @@ h3 {
     color: white;
 }
 
-button {
+.contactButton {
     font-size: 20px;
     padding: 10px 20px;
     background-color: red;
@@ -380,13 +506,13 @@ button {
     border-radius: 5px;
     color: white;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
     margin-top: 10px;
-    /* Adds some margin for spacing */
 }
 
-button:hover {
+.contactButton:hover {
     background-color: darkred;
+    transform: translateY(-3px);
 }
 
 .contact {
@@ -414,15 +540,14 @@ button:hover {
 .footer {
     display: flex;
     align-items: center;
-    margin-top: 30px;
-    margin-bottom: 20px;
+    padding-bottom: 20px;
 }
 
 footer {
     position: fixed;
     bottom: 0;
     width: 100%;
-    padding: 10px 0;
+    /* padding: 10px 0; */
     z-index: 10;
     /* Add padding for better appearance */
 }
