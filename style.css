@@ -343,10 +343,34 @@ section {
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-.experiences {
+.trainig{
     margin-top: 40px;
+    width: 100%;
     height: 100vh;
     display: flex;
+    align-items: center;
+    animation: appear ease-in;
+    animation-timeline: view();
+    animation-range: entry 0 cover 40%;
+}
+
+
+
+.trainigTexts{
+    width: 50%;
+    text-align: left;
+    padding-left: 25px;
+}
+
+.trainigTexts h4{
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.experiences {
+    height: 100vh;
+    display: flex;
+    flex-direction: row-reverse;
     align-items: center;
     animation: appear linear;
     animation-timeline: view();
@@ -363,8 +387,8 @@ section {
 
 .expTexts {
     width: 50%;
-    text-align: left;
-    padding-left: 25px;
+    text-align: right;
+    padding-right: 25px;
     /* animation: expTxt 4s 1s iteration-count direction fill-mode; */
 }
 
