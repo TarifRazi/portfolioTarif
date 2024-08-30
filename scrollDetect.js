@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
     // Select the sections and elements to animate
-    const hiSection = document.querySelector('#hi');
-    const aboutSection = document.querySelector('.about');
-    const aboutImg = document.querySelector('.aboutImg');
-    const aboutText = document.querySelector('.aboutText');
-    const educationSection = document.querySelector('#education');
+    // const hiSection = document.querySelector('#hi');
+    // const aboutSection = document.querySelector('.about');
+    // const aboutImg = document.querySelector('.aboutImg');
+    // const aboutText = document.querySelector('.aboutText');
+    // const educationSection = document.querySelector('#education');
     const skillsSection = document.querySelector('#skills');
     const progressBars = document.querySelectorAll('.progress');
 
@@ -48,12 +48,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const observer = new IntersectionObserver(observerCallback, observerOptions);
 
     // Observe the sections
-    observer.observe(hiSection);
-    observer.observe(aboutSection);
-    observer.observe(aboutImg);
-    observer.observe(aboutText);
-    observer.observe(educationSection);
+    // observer.observe(hiSection);
+    // observer.observe(aboutSection);
+    // observer.observe(aboutImg);
+    // observer.observe(aboutText);
+    // observer.observe(educationSection);
     observer.observe(skillsSection);
 });
-
-
