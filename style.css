@@ -99,10 +99,6 @@ section {
 
 .navli a:hover {
     transform: scale(1.5);
-    /* Increase size by 20% on hover */
-    /* z-index: 1; */
-    /* Bring the hovered item to the front */
-    /* text-decoration: underline; */
 }
 
 .navbar {
@@ -135,6 +131,16 @@ section {
     list-style: none;
 }
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
 #hi {
     width: 100%;
@@ -143,14 +149,9 @@ section {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    animation: fadeIn 2s ease-in-out;
 }
 
-/* #hi.visible,
-.about.visible,
-#education.visible {
-    opacity: 1;
-    transform: translateY(0);
-} */
 
 #hi h2 {
     animation-delay: 0.5s;
@@ -165,16 +166,14 @@ section {
     justify-content: space-evenly;
     align-items: center;
     height: 100vh;
-    /* opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 1s ease, transform 1s ease; */
+    animation: appear linear;
+    animation-timeline: view();
+    animation-range: entry 0 cover 40%;
 }
 
 .aboutImg {
     width: 50%;
-    /* transform: translateX(-50px);
-    opacity: 0;
-    transition: opacity 1s ease, transform 1s ease; */
+    transform: translateX(-50px);
 }
 
 .aboutImg img {
@@ -281,11 +280,12 @@ section {
     object-fit: cover;
 }
 
-.container1{
+.container1 {
     width: 100%;
     height: 100vh;
     margin-top: 30px;
 }
+
 .radial-bars {
     width: 100%;
     display: flex;
@@ -448,6 +448,9 @@ section {
     width: 100%;
     height: 100vh;
     align-items: center;
+    animation: appear linear;
+    animation-timeline: view();
+    animation-range: entry 0 cover 40%;
 }
 
 .trainig {
@@ -456,9 +459,9 @@ section {
     height: 100vh;
     display: flex;
     align-items: center;
-    /* animation: appear ease-in;
+    animation: appear ease-in;
     animation-timeline: view();
-    animation-range: entry 0 cover 40%; */
+    animation-range: entry 0 cover 40%;
 }
 
 
@@ -496,7 +499,7 @@ section {
     width: 50%;
     text-align: right;
     padding-right: 25px;
-    /* animation: expTxt 4s 1s iteration-count direction fill-mode; */
+    animation: expTxt 4s 1s iteration-count direction fill-mode;
 }
 
 .work {
@@ -678,14 +681,12 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
-    /* padding: 10px 0; */
     z-index: 10;
-    /* Add padding for better appearance */
 }
 
 /* responsive */
 
-@media (max-width: 768px) {
+@media (max-width: 720px) {
     .navbar {
         flex-direction: column-reverse;
         padding: 10px;
@@ -708,7 +709,7 @@ footer {
         flex-direction: row;
     }
 
-    .aboutImg{
+    .aboutImg {
         width: 30%;
     }
 
@@ -721,27 +722,27 @@ footer {
         /* padding: 20px; */
     }
 
-    .eduImg{
+    .eduImg {
         width: 50%;
     }
 
-    .eduText{
+    .eduText {
         width: 45%;
     }
 
-    .trainig{
+    .trainig {
         width: 100%;
     }
 
-    .trainigImg{
+    .trainigImg {
         width: 50%;
     }
 
-    .trainigImg img{
+    .trainigImg img {
         width: 100%;
     }
 
-    .trainigTexts{
+    .trainigTexts {
         width: 45%;
     }
 
@@ -779,17 +780,17 @@ footer {
         width: 100%;
     }
 
-    #hi{
+    #hi {
         width: 100%;
     }
 
-    .about{
+    .about {
         flex-direction: column;
         padding: 10px;
         height: 100vh;
     }
 
-    .aboutImg{
+    .aboutImg {
         width: 100%;
     }
 
@@ -798,13 +799,13 @@ footer {
         max-width: 300px;
     }
 
-    .aboutText{
+    .aboutText {
         padding: 0;
         width: 100%;
         /* text-align: center; */
     }
-    
-    .skills-section{
+
+    .skills-section {
         padding: 0;
     }
 
@@ -812,26 +813,93 @@ footer {
         width: 40px;
     }
 
-    .container1{
+    .container1 {
         height: auto;
     }
 
-    .education{
+    .education {
         flex-direction: column;
         margin-top: 30px;
+        height: auto;
     }
 
-    .eduText{
+    .eduText {
         width: 100%;
     }
 
-    .eduText h2{
+    .eduText h2 {
         text-align: center;
         margin-bottom: 30px;
     }
 
-    .eduImg{
+    .eduImg {
         width: 100%;
     }
-    
+
+    .eduImg img {
+        align-items: center;
+    }
+
+    .trainig {
+        flex-direction: column-reverse;
+        gap: 20px;
+        height: auto;
+        margin-top: 30px;
+    }
+
+    .trainigTexts {
+        width: 100%;
+    }
+
+    .trainigTexts h2 {
+        text-align: center;
+    }
+
+    .trainigImg {
+        width: 100%;
+    }
+
+    .experiences {
+        flex-direction: column-reverse;
+        height: auto;
+        margin-top: 30px;
+    }
+
+    .expImg {
+        width: 100%;
+    }
+
+    .expTexts {
+        width: 100%;
+    }
+
+    .expTexts h2 {
+        text-align: center;
+    }
+
+    .works {
+        flex-direction: column;
+    }
+
+    .project {
+        width: 100%;
+    }
+
+    .project img {
+        height: auto;
+    }
+
+    .contact {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .social {
+        flex-direction: row;
+    }
+
+    footer {
+        width: 100%;
+    }
+
 }
