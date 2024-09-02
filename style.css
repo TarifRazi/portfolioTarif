@@ -821,9 +821,11 @@ footer {
         flex-direction: column;
         padding: 10px;
         height: 100vh;
+        width: 95%;
     }
 
     .aboutImg {
+        padding-left: 10px;
         width: 100%;
     }
 
