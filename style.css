@@ -69,6 +69,13 @@ section {
     }
 }
 
+.hamburger {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    margin-right: 20px;
+    color: white;
+}
 
 .navli ul li a {
     text-decoration: none;
@@ -136,6 +143,7 @@ section {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -757,6 +765,10 @@ footer {
 }
 
 @media (max-width: 425px) {
+    body{
+        overflow-x: hidden;
+    }
+    
     h2 {
         font-size: 30px;
     }
@@ -766,19 +778,40 @@ footer {
     }
 
     .navbar {
+        padding: 0%;
         width: 100%;
-        /* padding: 0; */
+        text-align: right;
     }
 
     .hr {
         visibility: hidden;
     }
 
-    .navli {
-        text-wrap: wrap;
-        justify-content: space-around;
+    .navli ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.9);
         width: 100%;
+        text-align: right;
+        padding: 10px;
     }
+
+    .navli ul li {
+        margin: 10px 0;
+    }
+
+    .navli.active ul {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block;
+        width: 80%;
+    }
+}
 
     #hi {
         width: 100%;
@@ -878,28 +911,72 @@ footer {
     }
 
     .works {
+        height: auto;
         flex-direction: column;
+        animation: none;
+        margin-bottom: 20px;
     }
 
     .project {
         width: 100%;
     }
 
+    .project:hover {
+        transform: none;
+        box-shadow: none;
+    }
+
     .project img {
+        width: 80%;
         height: auto;
     }
 
-    .contact {
+    /* .contact {
         flex-direction: column;
         gap: 30px;
     }
 
     .social {
         flex-direction: row;
+    } */
+
+
+    /* Contact section */
+    .contactContainer h2,
+    .social,
+    .mailMe {
+        animation: none;
+    }
+
+    .contact {
+        flex-direction: column;
+        gap: 30px;
+        padding-top: 20px;
+        /* Ensure space from the works section */
+    }
+
+    .social {
+        flex-direction: row;
+    }
+
+    .contactContainer {
+        width: 80%;
+        height: auto;
+        /* padding: 20px; */
+    }
+
+    .mailMe {
+        width: 100%;
+    }
+
+    .social a:hover {
+        transform: none;
     }
 
     footer {
-        width: 100%;
+        display: none;
+        /* visibility: hidden; */
+        width: 20%;
     }
 
 }
